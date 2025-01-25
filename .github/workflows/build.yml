@@ -42,7 +42,7 @@ jobs:
           - distro: "debian"
             version: "bookworm"
           - distro: "kalilinux"
-            version: "kali-rolling:latest"
+            version: "kali-rolling"
     runs-on: ${{ matrix.arch.runner }}
     steps:
         # See the docs: https://github.com/docker/build-push-action
@@ -54,7 +54,7 @@ jobs:
       - name: Build Docker Image
         uses: docker/build-push-action@v6
         with:
-          tags: ghostty/${{ matrix.builds.distro }}-${{ matrix.builds.version }}-${{ matrix.arch.name }}
+          tags: ghostty:${{ matrix.builds.distro }}-${{ matrix.builds.version }}-${{ matrix.arch.name }}
           build-args: |
             DISTRO=${{ matrix.builds.distro }}
             DISTRO_VERSION=${{ matrix.builds.version }}

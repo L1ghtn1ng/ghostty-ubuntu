@@ -1,32 +1,6 @@
-ghostty (1.0.1-0~ppa4) DIST; urgency=low
+ghostty (1.0.1-0) DIST; urgency=medium
 
-  * Add arm64 builds
-  * Add Debian bookworm build
+  * Initial build of my fork
+  * Add Kali build
 
- -- Mike Kasberg <kasberg.mike@gmail.com>  Wed, 22 Jan 2025 20:00:00 -0700
-
-ghostty (1.0.1-0~ppa3) DIST; urgency=low
-
-  * Fix a regression on 22.04 where we had an incorrect dependency on
-    ligblib-2.0-0t64 instead of libglib2.0-0
-
- -- Mike Kasberg <kasberg.mike@gmail.com>  Thu, 09 Jan 2025 20:00:00 -0700
-
-ghostty (1.0.1-0~ppa2) DIST; urgency=low
-
-  * Recognize Ghostty as an alternative for x-terminal-emulator
-  * Fix zsh completion by installing it to vendor-completions
-
- -- Mike Kasberg <kasberg.mike@gmail.com>  Wed, 08 Jan 2025 09:00:00 -0700
-
-ghostty (1.0.1-0~ppa1) DIST; urgency=low
-
-  * https://ghostty.org/docs/install/release-notes/1-0-1
-
- -- Mike Kasberg <kasberg.mike@gmail.com>  Tue, 31 Dec 2024 14:45:00 -0700
-
-ghostty (1.0.0-0~ppa1) DIST; urgency=low
-
-  * Initial release.
-
- -- Mike Kasberg <kasberg.mike@gmail.com>  Sun, 29 Dec 2024 14:01:25 -0700
+ -- Jay Townsend <jay@cybermon.uk>  Sat, 25 Jan 2025 22:00:00 +0100

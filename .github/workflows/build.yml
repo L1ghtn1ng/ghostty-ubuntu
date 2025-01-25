@@ -54,7 +54,7 @@ jobs:
       - name: Build Docker Image
         uses: docker/build-push-action@v6
         with:
-          tags: ghostty:${{ matrix.builds.distro }}-${{ matrix.builds.version }}-${{ matrix.arch.name }}
+          tags: ghostty/${{ matrix.builds.distro }}-${{ matrix.builds.version }}-${{ matrix.arch.name }}
           build-args: |
             DISTRO=${{ matrix.builds.distro }}
             DISTRO_VERSION=${{ matrix.builds.version }}
@@ -67,14 +67,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Ghostty
-        run: docker run --rm -v$PWD:/workspace -w /workspace ghostty/${{ matrix.builds.distro }}-${{ matrix.builds.version }}-${{ matrix.arch.name }} /bin/bash build-ghostty.sh
+        run: docker run --rm -v$PWD:/workspace -w /workspace ghostty:${{ matrix.builds.distro }}-${{ matrix.builds.version }}-${{ matrix.arch.name }} /bin/bash build-ghostty.sh
 
       - name: Lint .deb Package
         # Lintian shouldn't fail our build yet
-        run: docker run --rm -v$PWD:/workspace -w /workspace ghostty/${{ matrix.builds.distro }}-${{ matrix.builds.version }}-${{ matrix.arch.name }} lintian ghostty_*.deb || true
+        run: docker run --rm -v$PWD:/workspace -w /workspace ghostty:${{ matrix.builds.distro }}-${{ matrix.builds.version }}-${{ matrix.arch.name }} lintian ghostty_*.deb || true
 
       - name: Test Installation
-        run: docker run --rm -v$PWD:/workspace -w /workspace ghostty/${{ matrix.builds.distro }}-${{ matrix.builds.version }}-${{ matrix.arch.name }} dpkg -i ghostty_*.deb
+        run: docker run --rm -v$PWD:/workspace -w /workspace ghostty:${{ matrix.builds.distro }}-${{ matrix.builds.version }}-${{ matrix.arch.name }} dpkg -i ghostty_*.deb
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4

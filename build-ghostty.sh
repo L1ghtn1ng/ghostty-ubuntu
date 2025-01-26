@@ -5,6 +5,10 @@ set -e
 GHOSTTY_VERSION="1.0.1"
 
 DISTRO_VERSION=$(lsb_release -sr)
+if [ "${DISTRO_VERSION}" = "n/a" ]; then
+    DISTRO_VERSION="$(lsb_release -sc)"
+fi
+
 DISTRO=$(lsb_release -sc)
 
 #FULL_VERSION="$GHOSTTY_VERSION-0~${DISTRO}1"

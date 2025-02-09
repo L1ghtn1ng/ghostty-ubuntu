@@ -2,7 +2,7 @@
 
 set -e
 
-GHOSTTY_VERSION="1.0.1"
+GHOSTTY_VERSION="1.1.0"
 
 DISTRO_VERSION=$(lsb_release -sr)
 if [ "${DISTRO_VERSION}" = "n/a" ]; then
@@ -26,7 +26,7 @@ tar -xzmf "ghostty-$GHOSTTY_VERSION.tar.gz"
 cd "ghostty-$GHOSTTY_VERSION"
 
 # On Ubuntu it's libbz2, not libbzip2
-sed -i 's/linkSystemLibrary2("bzip2", dynamic_link_opts)/linkSystemLibrary2("bz2", dynamic_link_opts)/' build.zig
+sed -i 's/linkSystemLibrary2("bzip2", dynamic_link_opts)/linkSystemLibrary2("bz2", dynamic_link_opts)/' src/build/SharedDeps.zig
 
 # Fetch Zig Cache
 ZIG_GLOBAL_CACHE_DIR=/tmp/offline-cache ./nix/build-support/fetch-zig-cache.sh
@@ -64,8 +64,9 @@ gzip -n -9 zig-out/usr/share/doc/ghostty/changelog.Debian
 gzip -n -9 zig-out/usr/share/man/man1/ghostty.1
 gzip -n -9 zig-out/usr/share/man/man5/ghostty.5
 
-## postinst and prerm are used by dpkg-deb; ensure they are executable
+## postinst, preinst and prerm are used by dpkg-deb; ensure they are executable
 chmod +x zig-out/DEBIAN/postinst
+chmod +x zig-out/DEBIAN/preinst
 chmod +x zig-out/DEBIAN/prerm
 
 # Zsh looks for /usr/local/share/zsh/site-functions/

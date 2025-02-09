@@ -7,7 +7,7 @@
 
 # Ghostty Ubuntu
 
-This repository contains build scripts to produce an _unofficial_ Ubuntu/Debian
+This repository contains build scripts to produce an _unofficial_ Ubuntu/Debian/Kali
 package (.deb) for [Ghostty](https://ghostty.org).
 
 

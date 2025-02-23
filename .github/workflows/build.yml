@@ -33,8 +33,8 @@ jobs:
           - name: arm64
             runner: ubuntu-24.04-arm
         builds:
-          # - distro: "ubuntu"
-          #   version: "22.04"
+          - distro: "ubuntu"
+            version: "22.04"
           - distro: "ubuntu"
             version: "24.04"
           - distro: "ubuntu"

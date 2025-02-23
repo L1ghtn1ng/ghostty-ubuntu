@@ -13,12 +13,8 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get -qq update && \
     pandoc \
     wget
 
-# Install Minisign
-# https://jedisct1.github.io/minisign/
-RUN wget -q "https://github.com/jedisct1/minisign/releases/download/0.11/minisign-0.11-linux.tar.gz" && \
-    tar -xzf minisign-0.11-linux.tar.gz && \
-    mv "minisign-linux/$(uname -m)/minisign" /usr/local/bin && \
-    rm -r minisign-linux
+ADD minisign_install.sh .
+RUN bash minisign_install.sh
 
 # Install zig
 # https://ziglang.org/download/

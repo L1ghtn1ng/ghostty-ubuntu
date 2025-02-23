@@ -31,7 +31,7 @@ sed -i 's/linkSystemLibrary2("bzip2", dynamic_link_opts)/linkSystemLibrary2("bz2
 if [ $(lsb_release -sr) = "22.04" ]; then
   # Patch for older versions of some libs on ubuntu 22.04
   echo "Patch for Ubuntu 22.04"
-  patch -p1 < ../ubuntu_22.04.patch
+  patch -p1 < ../ubuntu22_04.patch
 
 fi
 
